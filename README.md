@@ -1,5 +1,11 @@
 # NoticeRecord
 
+## Command
+
+```nr reload```
+
+```nr record <radius>```
+
 ## License 
 Written in 2022 by Nikomaru &emsp; No Rights Reserved. <br>
 
