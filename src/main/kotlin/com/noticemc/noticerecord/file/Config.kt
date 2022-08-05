@@ -8,13 +8,14 @@ import kotlinx.serialization.json.Json
 
 object Config {
     lateinit var config: ConfigData
-    private val file = plugin.dataFolder.resolve("config.json")
-    private val json = Json{
-        isLenient = true
-        prettyPrint = true
-    }
 
     fun load() {
+        val file = plugin.dataFolder.resolve("config.json")
+        val json = Json{
+            isLenient = true
+            prettyPrint = true
+        }
+
         val database = DatabaseConfig("NoticeRecord", 3306, "root", "pass", "localhost")
         val configData = json.encodeToString(ConfigData(database))
 

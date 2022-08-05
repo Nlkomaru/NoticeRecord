@@ -70,6 +70,10 @@ tasks {
     compileTestKotlin {
         kotlinOptions.jvmTarget = "17"
     }
+    shadowJar {
+        relocate("cloud.commandframework", "com.noticemc.noticerecord.shaded.cloud")
+        relocate("io.leangen.geantyref", "com.noticemc.noticerecord.shaded.typetoken")
+    }
     build {
         dependsOn(shadowJar)
     }
