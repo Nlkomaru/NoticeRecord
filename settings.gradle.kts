@@ -1,4 +1,4 @@
-rootProject.name = "NoticeTemplate"
+rootProject.name = "NoticeRecord"
 
 pluginManagement {
     repositories {

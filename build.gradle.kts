@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
     id("java")
     id("eclipse")
@@ -23,8 +25,8 @@ repositories {
     maven("https://repo.incendo.org/content/repositories/snapshots")
 }
 
-val exposedVersion = "latest.release"
-val cloudVersion = "latest.release"
+val exposedVersion = "0.39.2"
+val cloudVersion = "1.7.0"
 dependencies {
     compileOnly("io.papermc.paper", "paper-api", "1.19-R0.1-SNAPSHOT")
 
@@ -42,11 +44,18 @@ dependencies {
     implementation("org.jetbrains.exposed", "exposed-core", exposedVersion)
     implementation("org.jetbrains.exposed", "exposed-dao", exposedVersion)
     implementation("org.jetbrains.exposed", "exposed-jdbc", exposedVersion)
+    implementation("org.jetbrains.exposed", "exposed-java-time", exposedVersion)
+
+    implementation("mysql","mysql-connector-java","8.0.30")
+
 
     implementation("org.jetbrains.kotlinx", "kotlinx-coroutines-core", "1.6.2")
 
+    implementation("org.jetbrains.kotlinx", "kotlinx-serialization-json", "1.3.3")
+
     implementation("com.github.shynixn.mccoroutine", "mccoroutine-bukkit-api", "2.2.0")
     implementation("com.github.shynixn.mccoroutine", "mccoroutine-bukkit-core", "2.2.0")
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 java {
@@ -74,13 +83,21 @@ tasks {
 
 
 bukkit {
-    name = "Template" // need to change
+    name = "NoticeRecord" // need to change
     version = "miencraft_plugin_version"
-    website = "https://github.com/Nlkomaru/NoticeTemplate"  // need to change
+    website = "https://github.com/Nlkomaru/NoticeRecord"  // need to change
 
-    main = "com.noticemc.noticetemplate.NoticeTemplate"  // need to change
+    main = "com.noticemc.noticerecord.NoticeRecord"  // need to change
 
     apiVersion = "1.19"
     libraries = listOf("com.github.shynixn.mccoroutine:mccoroutine-bukkit-api:2.2.0",
         "com.github.shynixn.mccoroutine:mccoroutine-bukkit-core:2.2.0")
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }
