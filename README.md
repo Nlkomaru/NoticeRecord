@@ -1,6 +1,4 @@
-# NoticeTemplate
-
-Please delete this README after copying
+# NoticeRecord
 
 ## License 
 Written in 2022 by Nikomaru &emsp; No Rights Reserved. <br>
